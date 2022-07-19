@@ -1,0 +1,931 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* GASTROMOND ET SUPERCLARENDON */
+@font-face {
+    font-family: "Gastromond";
+    src: url("./polices/Gastromond.woff2") format("woff2"), url("./polices/Gastromond.woff") format("woff");
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Superclarendon";
+    src: url("./polices/Superclarendon-Regular.woff2") format("woff2"), url("./polices/Superclarendon-Regular.woff")format("woff");
+    font-display: swap;
+  }
+
+
+
+
+
+
+/* HEADER */
+#headerBase{
+	display: flex;
+	position: sticky;
+	justify-content: space-between;
+	height: 5em;
+	background-color: white;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 10000;
+}
+
+main{
+	margin-top: 5em;
+}
+
+header #logo{
+    height: 5em;
+    width: auto;
+}
+
+.openbtn{
+    width: auto;
+	background-color: white;
+	border: none;
+}
+
+#menu, #recherche{
+	height: 3em;
+	padding: 1em;
+}
+
+
+
+body{
+    background-color: #E4A682;
+}
+/* FIN HEADER */
+
+/* SIDEBAR */
+.sideBar{
+	height: 100%;
+	width: 0%;
+	position: fixed;
+  	top: 0em;
+  	left: 0;
+	overflow-x: hidden;
+	background-color: black;
+	z-index: 100000;
+}
+
+.sideBar a, .FIND, .localisation-btn, .folklore-btn, .pwa, .soumettre, 
+.calendrier, .insignes, .codes, .revisions
+{
+	text-decoration: none;
+	font-size: 15px;
+	display: block;
+	color: #818181;
+	transition: 0.3s;
+	display: flex;
+	margin-top: auto;
+	margin-bottom: auto;
+	font-family: "Superclarendon";
+  }
+
+
+.sideBar a img, .localisation-btn img, .folklore-btn img, .faluche img, .soumettre img, .pwa img
+,.calendrier img, .insignes img, .codes img, .revisions img
+{
+	height: 45%;
+	width: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: 7%;
+	margin-right: 7%;
+  }
+
+  .pwa img{
+	height: 35%;
+  }
+
+  .FIND img, .localisation-container img, .folklore-container img, .calendrier-container img, .insignes-container img, .codes-container img, .revisions-container img
+  {
+	height: 60%;
+	width: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: 7%;
+	margin-right: 7%;
+  }
+
+  button, .FIND {
+	height: 8%;
+  }
+  
+
+
+button{
+	width: 100%;
+	text-align: left;
+}
+
+.closebtn{
+	right: 1.5em;
+	top: 1.5em;
+	position: absolute;
+}
+.closebtnImg{
+	width: 1em;
+	height: auto;
+}
+
+.FIND, .pwa, .soumettre
+,.calendrier, .insignes, .revisions, .codes
+{
+	background-color: black;
+	border: none;
+}
+
+.pwa{
+	bottom: 8%;
+	position: absolute;
+}
+
+.soumettre{
+	bottom: 0em;
+	position: absolute;
+}
+
+
+.localisation-container{
+	display: none;
+	background-color: #262626;
+	height: 100%;
+
+}
+.localisation-btn{
+	background-color: #323232;
+	border: none;
+	height: 50%;
+
+}
+
+
+.folklore-container{
+	display: none;
+	background-color: #262626;
+	height: 60%;
+}
+.folklore-btn{
+	background-color: #323232;
+	border: none;
+	height: 50%;
+}
+
+
+.active {
+	background-color: white;
+}
+#deroulant{
+	display: none;
+	height: 16%;
+}
+
+.calendrier-container, .insignes-container, .codes-container, .revisions-container{
+	display: none;
+	background-color: #262626;
+	height: 60%;
+}
+.calendrier-btn, .insignes-btn, .codes-btn, .revisions-btn{
+	background-color: black;
+	border: none;
+	height: 8%;
+	display: flex;
+}
+.calendrier-btn img, .insignes-btn img, .codes-btn img, .revisions-btn img{
+	margin-left: 7%;
+	height: 50%;
+	margin-right: 7%;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+
+
+.france, .belgique, .congres, .ordinesque{
+	height: 50%;
+	display: flex;
+	background-color: #262626;
+	border: none;
+}
+
+.faluche, .calotte, .penne{
+	display: flex;
+	background-color: #262626;
+	border: none;
+	height: 33.33%;
+}
+
+.photoFindSideBar{
+	width: 45%;
+	height: auto;
+	position: absolute;
+	top: 55%;
+	left: 25%;
+	z-index: -1;
+}
+
+
+.separateur{
+	height: 1px;
+	background-color: #818181;
+	width: 60%;
+	text-align: center;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* RECHERCHE */
+
+#searchForm{
+	display: none;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 10000;
+}
+
+.container-1{
+	background-color: black;
+	width: 80%;
+	padding-left: 5%;;
+}
+.fa{
+	color : black;
+	position: absolute;
+	font-size: 2em;;
+	margin-top: 0.7em;
+	z-index: 1000;
+	text-align: left;
+	margin-left: 1.5%;
+}
+
+#searchInput{
+	border: none;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	width: 85%;
+	padding-left: 45px;
+	margin-top: 1.45em;
+	margin-bottom: 1.4em;
+	height: 3em;
+	position: relative;
+	z-index: 1;
+}
+
+.searchForm{
+	height: 5em;
+	background-color: white;
+	display: flex;
+}
+
+
+.rechercheGlobale{
+	background-color: white;
+	border-bottom: solid black 1px;
+	width: 100%;
+	display: flex;
+	height: 3.5em;
+	font-family: "Superclarendon";
+	text-decoration: none;
+
+}
+.rechercheGlobaleAll{
+	height: 10.5;
+	top: 5em;
+	position: absolute;
+	width: 100%;
+	z-index: 10000000000;
+	position: fixed;
+}
+.rechercheGlobale a{
+	display: flex;
+	width: 100%;
+	color: black;
+	text-decoration: none;
+	}
+.nomVilleSearchGlobal{
+	height: 1em;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	margin-left: 1.5em;
+}
+
+
+
+
+.rechercheGlobaleAucunResultat{
+	background-color: white;
+	border-bottom: solid black 1px;
+	position: absolute;
+	width: 100%;
+	display: flex;
+	width: 100%;
+	height: 3.5em;
+	font-family: "Superclarendon";
+	text-decoration: none;
+}
+.rechercheGlobaleAucunResultat a{
+	height: 1em;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+
+
+
+
+
+
+
+
+#closebtnSearchForm{
+width: auto;
+position: relative;
+height: 2em;
+margin-top: 1.5em;
+margin-bottom: 1.5em;
+}
+
+
+
+.closebtnSearchForm{
+	width: 20%;
+	text-align: center;
+	vertical-align: baseline;
+	background-color: black;
+}
+
+/* FIN RECHERCHE */
+
+/* RETOUR */
+.retourbtn{
+	width: 5%;
+	height: auto;
+	margin: 3%;
+	position: absolute;
+	z-index: 1000;
+}
+
+/* HOMEPAGE */
+.headHomepage{
+	font-family: "Gastromond";
+	font-size: 220%;
+	line-height: 140%;
+	display: flex;
+	padding-left: 10%;
+	padding-right: 5%;
+	padding-top: 5%;;
+	padding-bottom: 3%;
+}
+
+.titreHomepage{
+	width: 50%;
+	margin: auto;
+}
+
+.photoHomepage{
+	width: 50%;
+}
+
+.photoHomepage img{
+	width: 60%;
+	height: auto;
+	margin-left: 20%;
+	margin-right: 20%;
+	margin-top: 29%;
+	margin-bottom: 29%;
+	position: relative;
+	z-index: 1;
+}
+
+.inputHomePage{
+	/* display: flex; */
+	margin-left: 5%;
+	margin-right: 5%;
+	/* padding: 1em; */
+	text-align: center;
+}
+
+#triInputHomePage{
+	padding-top: 1em;
+	padding-bottom: 1em;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: none;
+	border: solid black 1px;
+	background-color: rgb(162, 160, 160);
+	font-family: "Superclarendon";
+	width: 20%;
+}
+
+#searchInputHomePage{
+	margin-left: 2%;;
+	padding: 1em;
+	width: 60%;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border: solid black 1px;
+	font-family: "Superclarendon";
+}
+
+
+
+
+
+
+.resumeHomepage{
+	text-align: center;
+	font-family: "Superclarendon";
+	font-size: 75%;
+	margin-left: 10%;
+	margin-right: 10%;
+	line-height: 140%;
+}
+
+
+
+.collaborations h1, .technologies h1, .contact h1{
+	font-family: "Gastromond";
+	font-size: 80%;
+	margin-left: 10%;
+}
+.collaborations ul{
+	list-style-type: disc;
+	margin-left: 15%;
+	font-family: "Superclarendon";
+	font-size: 75%;
+}
+#MBTE{
+	width: 20%;
+	height: auto;
+}
+#ESTU{
+	width: 22%;
+	height: auto;
+}
+.photosCollab{
+	text-align: center;
+}
+#ESTU, #MBTE{
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+
+
+
+.logoTechnologies{
+	display: flex;
+	width: 80%; 
+	text-align: center;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.logoTechnologies img{
+	padding: 3%;
+	width: 8%;
+}
+
+.responsive{
+	position: relative;
+	text-align: center;
+}
+
+.responsive img{
+	width: 15%;
+}
+
+.mail{
+	color: black;
+	font-family: "Superclarendon";
+	margin-left: 15%;
+	font-size: 75%;
+}
+
+
+
+
+
+
+
+
+
+/* VILLE */
+
+.infoFrance{
+	background-color: black;
+	color: white;
+	height: 4em;
+	display: flex;
+	font-family: "Superclarendon";
+	font-size: 80%;
+}
+.infoFrance img{
+	height: 70%;
+	width: auto;
+	margin-left: 1.5em;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	background-color: black;
+}
+.infoFrance a{
+	margin-left: 1.5em;
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+#searchInputVille{
+	border: none;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	width: 80%;
+	height: 3em;
+	position: relative;
+}
+.searchInputVille{
+	text-align: center;
+}
+
+#form{
+	text-align: center;
+}
+
+.aucunResultat{
+	text-align: center;
+	font-family: "Superclarendon";
+	padding-top: 1em;
+}
+
+/* VILLES UNE PAR UNE */
+
+.titreVille{
+	display: flex;
+
+}
+
+.titreVille h1{
+	font-family: "Gastromond";
+	margin: 1em;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+.titreVille img{
+text-align: left;
+}
+
+.uneVille{
+	background-color: black;
+	height: 4em;
+	border-top: solid white 1px;
+	border-bottom: solid white 1px;
+	font-family: "Superclarendon";
+	font-size: 80%;
+	/* font-size: 60%; */
+	text-decoration: none;
+	display: flex;
+}
+
+.uneVille a{
+display: flex;
+width: 100%;
+text-decoration: none;
+}
+.uneVille div{
+margin-left: 1.5em;
+margin-top: 5%;
+margin-bottom: 5%;
+color: white
+}
+
+.blasonUneVille{
+	height: 70%;
+	width: auto;
+	margin-left: 1.5em;
+	margin-top: 2.5%;
+	margin-bottom:2.5%;
+}
+
+
+
+.uneCorpo{
+	background-color: white;
+	height: 4em;
+	border-top: solid black 1px;
+	border-bottom: solid black 1px;
+	font-family: "Superclarendon";
+	font-size: 80%;
+	/* font-size: 60%; */
+	display: flex;
+}
+
+.uneCorpo a{
+	display: flex;
+	width: 100%;
+	text-decoration: none;
+	}
+
+.uneCorpo div{
+	margin-left: 1.5em;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	color: black;
+	}
+	
+	.blasonUneCorpo{
+		height: 90%;
+		width: auto;
+		margin-left: 1.5em;
+		margin-top: 0.5%;
+		margin-bottom: 0.5%;
+	}
+
+	.enTeteCorpo{
+		background-color: gray;
+		padding-top: 5%;
+		padding-bottom: 5%;
+		font-family: "Gastromond";
+		border-top: solid black 1px;
+		font-size: 80%;
+		padding-left: 5%;
+	}
+
+
+
+
+
+
+
+
+
+
+/* CORPORATION */
+
+.head{
+	/* display: flex; */
+	position: relative;
+	text-align: center;
+}
+
+tr, td, table{
+	border: solid black 1px;
+}
+
+.corporation{
+	text-align: center;
+	margin: 1em;
+}
+
+
+.titreCorporation{
+	padding-top: 1em;
+	font-weight: bold;
+	text-decoration: underline;
+	font-size: 150%;
+	width: 50%;
+	margin-left: 25%;
+	margin-right: 25%;
+}
+.head img{
+	width: 25%;
+	height: auto;
+	position: absolute;
+	right: 3%;
+	top: 0em;
+}
+
+
+.resumeCorporation{
+	margin-bottom: 1em;
+	text-align: center;
+}
+.resume{
+	margin-right: 7%;
+	margin-left: 7%;
+	text-align: center;
+}
+
+
+.tableCorporation{
+	margin-bottom: 0.5em;
+	margin-top: 0.5em;
+}
+.tableCorporation td, li{
+	padding: 0.5em;
+	text-align: justify;
+}
+.premierTableau{
+	margin-right: auto;
+	margin-left:auto;
+	width: 80%
+}
+.tableauGauche{
+	width: 30%;
+}
+
+
+.decorumCorporation{
+	margin-bottom: 0.2em;
+}
+
+.decorumCorporation td img{
+	height: 5em;
+	width: auto;
+	padding: 0.3em;
+}
+.infoDecorum{
+	padding: 0.3em;
+}
+
+.decorumCorporation table{
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	text-align: center;
+}
+
+
+.anecdotesCorporation{
+	margin-bottom: 0.5em;
+	text-align: center;
+	margin-right: 7%;
+	margin-left: 7%;
+}
+.titreAnecdote{
+	font-style: italic;
+	text-decoration: underline;
+
+}
+
+.chantCorporation{
+	margin-bottom: 0.5em;
+	text-align: center;
+	margin-right: 7%;
+	margin-left: 7%;
+}
+
+.historiqueCroixCorporation{
+	margin-bottom: 0.5em;
+	text-align: center;
+	margin-right: 5%;
+	margin-left: 5%;
+	width: 90%;
+	font-size: 90%;
+}
+
+.historiqueCroixCorporation td{
+	padding: 0.2em;
+	text-align: justify;
+}
+
+.historiqueCroixCorporation table{
+width: 100%;
+}
+
+.pinsCorporation{
+	margin-bottom: 0.5em;
+}
+
+.pinsCorporation img{
+	height: 6em;
+	width: auto;
+	text-align: center;
+	padding: 0.3em;
+}
+.pinsCorporation td{
+	text-align: center;
+	padding: 0.3em;
+}
+
+.pinsCorporation table{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+h2{
+	font-weight: bold;
+	margin-bottom: 0.2em;
+	text-align: center;
+}
+
+.fLettre{
+	font-family: "Gastromond";
+	padding: 0.5em;
+}
+
+
+.avanceN{
+	width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background: red;
+	margin-top: 4%;
+	margin-bottom: 4%;
+	margin-right: 3%;
+	right: 0em;
+	position: absolute;
+}
+.avanceM{
+	width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background: orange;
+	margin-top: 4%;
+	margin-bottom: 4%;
+	margin-right: 3%;
+	right: 0em;
+	position: absolute;
+}
+.avanceO{
+	width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background: greenyellow;
+	margin-top: 4%;
+	margin-bottom: 4%;
+	margin-right: 3%;
+	right: 0em;
+	position: absolute;
+}
+
+
+/* EVENEMENTS */
+
+.calendrierCongrès{
+	width: 80%;
+	height: 50%;
+}
