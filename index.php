@@ -167,10 +167,10 @@
 
       <!-- INPUT -->
       <div class="inputHomePage">
-          <select id ="triInputHomePage" name="">
-            <option value="">Trier</option>
-            <option value="">Nom</option>
-            <option value="">Ville</option>
+          <select id ="triInputHomePage" name="tri">
+            <option value="trier">Trier</option>
+            <option value="nom">Nom</option>
+            <option value="ville">Ville</option>
         </div>
           </select>
             <input type="text" name="s" placeholder="Chercher folklore ?" id="searchInputHomePage" autocomplete="off">
@@ -178,22 +178,28 @@
       </div>
       <div id="result-search-global-hp"></div>
       <br><br>
+      <?php echo $tri ; ?>
+
+
 
       <script>
   $(document).ready(function(){
-    $('#searchInput').keyup(function(){
+    $('#searchInputHomePage').keyup(function(){
       $('#result-search-global-hp').html('');
 
       var utilisateur = $(this).val();
-
+      var tri = $("#triInputHomePage").val();
+      
           $.ajax({
               type: 'GET',
-              url: 'localisation_folklore/fonctions/recherche_globale.php',
-              data: 'user=' + encodeURIComponent(utilisateur),
+              url: 'localisation_folklore/fonctions/recherche_globale_hp.php',
+              data: {user: encodeURIComponent(utilisateur), tri: encodeURIComponent(tri)},
               success: function(data){
                 if(data != ""){
-                    $('#result-search-global').append(data);
-                    console.log(utilisateur)
+                    $('#result-search-global-hp').append(data);
+                    console.log(utilisateur);
+                    console.log(tri);
+                    
               }
               else{
                     document.getElementById('result-search-global-hp').innerHTML = "<div>Aucun résultat</div>"
