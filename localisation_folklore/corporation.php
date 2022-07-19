@@ -31,7 +31,7 @@
 <header>
 <section id="headerBase">
         <img src="../boutons/menu-lateral.png" class="openbtn" onclick="openNav()" alt="menu" id="menu">
-        <img src="../Logos/Logo512.png" alt="logo512" id="logo">
+        <img src="../Logos/Logo512.png" alt="logo512" id="logo" onclick="self.location.href='../index.php'">
         <img src="../boutons/recherche.png" alt="recherche" id="recherche" class="openbtn" onclick="myFunction(), closeNav()">
       </section>
 
