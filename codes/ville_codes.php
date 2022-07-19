@@ -1,11 +1,9 @@
 <?php
 
- include("fonctions/connexionbdd.php");
+ include("../localisation_folklore/fonctions/connexionbdd.php");
 
 ?>
-<?php $id = /*(int)*/ $_GET['id']; 
-      $id2 = /*(int)*/ $_GET['id2']; 
-?>
+<?php $id = /*(int)*/ $_GET['id'];?>
 
 
 <!DOCTYPE html>
@@ -82,7 +80,7 @@
 
           $.ajax({
               type: 'GET',
-              url: '../localisation_folklore/fonctions/recherche_globale.php',
+              url: 'fonctions/recherche_globale.php',
               data: 'user=' + encodeURIComponent(utilisateur),
               success: function(data){
                 if(data != ""){
@@ -112,20 +110,34 @@
 
 
 
-<?php
-      include("sidebar2.php");
-?>
 
-<?php 
-$all = $pdo->query('SELECT photo_ville, avance FROM villes WHERE ville = "'.$id2.'"');
-                    while($prenom = $all->fetch(PDO::FETCH_ASSOC))  {?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+      include("sidebar5.php");
+?>
 
     <!-- RETOUR -->
     <a class="titreVille" href="javascript:void(0)" onclick="history.go(-1)"><img class="retourbtn" src="../boutons/retour.png"></a>
     <div class="titreVille">
-    <h1> <?php echo $id.' à '.$id2 ; ?></h1></div>
-    <div class="infoFrance"><img class="france" src="../Photos/posts_images_profil_ville/<?php echo $prenom['photo_ville']; ?>"><a>Le folklore à  <?php echo $id2; ?></a><div class="avanceN"></div></div><br>
-<?php } ?>
+    <h1>Trouve les codes de <?php echo $id; ?></h1></div>
+    <div class="infoFrance"><img class="france" src="../Logos/<?php echo $id; ?>.png"><a>Les folklores en <?php echo $id; ?></a><div class="avanceN"></div></div><br>
+
 
 
 
@@ -149,7 +161,7 @@ $all = $pdo->query('SELECT photo_ville, avance FROM villes WHERE ville = "'.$id2
 
           $.ajax({
               type: 'GET',
-              url: 'fonctions/recherche_type_ville.php?id=<?php echo $id; ?>&id2=<?= $id2?>',
+              url: 'fonctions/recherche_utilisateur.php?id=<?php echo $id; ?>',
               data: 'user=' + encodeURIComponent(utilisateur),
               success: function(data){
                 if(data != ""){
@@ -173,7 +185,7 @@ $all = $pdo->query('SELECT photo_ville, avance FROM villes WHERE ville = "'.$id2
 <?php 
 if(empty($_GET['user']) )
  {
-$all = $pdo->query('SELECT DISTINCT nom, photo_profil_corpo, avance FROM corporations WHERE type_corporation = "'.$id.'" AND ville = "'.$id2.'" ORDER BY nom');
+$all = $pdo->query('SELECT DISTINCT ville, photo_ville, avance FROM villes WHERE pays = "'.$id.'" ORDER BY ville');
 ?>
 
 
@@ -187,9 +199,9 @@ $all = $pdo->query('SELECT DISTINCT nom, photo_profil_corpo, avance FROM corpora
 
 <?php
 
-            if (substr($prenom['nom'],0,1) > $fLettre)
+            if (substr($prenom['ville'],0,1) > $fLettre)
     {
-        $fLettre = substr($prenom['nom'], 0, 1);
+        $fLettre = substr($prenom['ville'], 0, 1);
         echo '<h1 class="fLettre">'.$fLettre.'</h1>';
     }
 ?>
@@ -198,8 +210,8 @@ $all = $pdo->query('SELECT DISTINCT nom, photo_profil_corpo, avance FROM corpora
 
 
             <div class="uneVille">
-            <a href="../localisation_folklore/corporation.php?id=<?= $prenom['nom']?>"> 
-              <?php echo '<img class="blasonUneVille" src="../Photos/posts_images_profil/' .$prenom['photo_profil_corpo'].'">'. '<div>' .$prenom['nom']. '</div><span class="'.$prenom['avance'].'"></span>' ?>
+            <a href="codes.php?id=<?= $prenom['ville']?>"> 
+              <?php echo '<img class="blasonUneVille" src="../Photos/posts_images_profil_ville/' .$prenom['photo_ville'].'">'. '<div>' .$prenom['ville']. '</div><span class="'.$prenom['avance'].'"></span>' ?>
               </a></div><?php } }
               else{
                   ?>
@@ -225,6 +237,7 @@ $all = $pdo->query('SELECT DISTINCT nom, photo_profil_corpo, avance FROM corpora
 
 
     </main>
+
 
 
 </body>
